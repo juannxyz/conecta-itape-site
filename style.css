@@ -1,0 +1,227 @@
+/* ===== Site todo ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== Index ===== */
+#container-index{
+    height: 100vh;
+    background-color: #0f5d0f;
+    color: white;
+}
+#cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+}
+
+#h2-cabecalho{
+    line-height: 1.1;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+    letter-spacing: 2px;
+}
+
+#ul-cabecalho{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.a-cabecalho{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.a-cabecalho:hover{
+    cursor: pointer;
+    color: #0c4a0c;
+}
+
+#main-index{
+    padding: 80px 60px;
+    max-width: 600px;
+}
+
+#h1-index{
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+}
+
+#p-index{
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+#botao-index{
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #0c4a0c;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#botao-index:hover{
+    cursor: pointer;
+    background-color: #0c4a0c;
+    color: white;
+}
+
+/* ===== Fale Conosco ===== */
+#container-fale_conosco{
+    min-height: 100vh;
+    background-color: #0f5d0f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+#main-fale_conosco{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1000px;
+    width: calc(100% - 40px);
+    margin: auto;
+}
+#conteudo-fale_conosco{
+    display: flex;
+    gap: 40px;
+    border: 1px solid white;
+    padding: 40px;
+    border-radius: 15px;
+}
+#h1-fale_conosco{
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+}
+#div-fale_conosco{
+    flex: 1;
+}
+#h2-fale_conosco{
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+}
+.p-fale_conosco{
+    text-align: center;
+    padding: 10px 0;
+}
+#form-fale_conosco{
+    display: grid;
+    gap: 10px;
+    font-weight: bold;
+    flex: 1;
+}
+.entrada-form{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+#botao-fale_conosco{
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #0c4a0c;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+}
+#botao-fale_conosco:hover{
+    cursor: pointer;
+    background-color: #0c4a0c;
+    color: white;
+}
+
+/* ===== RESPONSIVO (CELULAR) ===== */
+@media (max-width: 768px){
+    /* ===== Site todo ===== */
+
+    body {
+        height: auto;
+    }
+
+    /* ===== Index ===== */
+    #container-index{
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 40px;
+    }
+
+    #cabecalho{
+        padding: 20px;
+    }
+
+    #ul-cabecalho{
+        display: none;
+    }
+
+    #cabecalho::after{
+        content: "☰";
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+
+    #main-index{
+        padding: 40px 20px;
+    }
+
+    #h1-index{
+        font-size: 40px;
+    }
+
+    #p-index{
+        font-size: 16px;
+    }
+
+    #botao-index{
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 30px auto 0;
+    }
+
+    /* ===== Fale Conosco ===== */
+    #main-fale_conosco{
+        flex-direction: column;
+        margin: 10px auto;
+        padding: 10px;
+        width: calc(100% - 20px);
+        flex: 1;
+    }
+
+    #conteudo-fale_conosco{
+        padding: 10px;
+        border: none;
+    }
+
+    #div-fale_conosco{
+        display: none;
+    }
+
+    hr{
+        display: none;
+    }
+
+}
