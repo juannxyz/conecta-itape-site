@@ -1,30 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-fist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Conecta Itape</title>
 </head>
+
 <body>
-    <div id="container-index">
+    <div id="site">
+        <!-- CABEÇALHO -->
         <header id="cabecalho">
-            <h2 id="h2-cabecalho">Conecta Itape</h2>
-            
+            <h2 class="h2-logo">Conecta Itape</h2>
             <nav>
                 <ul id="ul-cabecalho">
-                    <li><a class="a-cabecalho" href="index.html">Início</a></li>
-                    <li><a class="a-cabecalho" href="#">Descobrir ONGs</a></li>
+                    <li><a class="a-cabecalho" href="#cabecalho">Início</a></li>
+                    <li><a class="a-cabecalho" href="#descobrir">Descobrir ONGs</a></li>
                     <li><a class="a-cabecalho" href="#">Impacto</a></li>
-                    <li><a class="a-cabecalho" href="Fale-Conosco.html">Fale Conosco</a></li>
+                    <li><a class="a-cabecalho" href="#fale_conosco">Fale Conosco</a></li>
                 </ul>
             </nav>
         </header>
-        <main id="main-index">
-            <h1 id="h1-index">Lorem, ipsum dolor</h1>
-            <p id="p-index">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a href="#" id="botao-index">Ver ONGs</a>
-        </main>
+        <main> <!-- DESTAQUE -->
+            <section id="destaque">
+                <h1 id="h1-destaque">Lorem, ipsum dolor</h1>
+                <p id="p-destaque"> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> <a href="#descobrir"
+                    id="botao-destaque">Ver ONGs</a>
+            </section> <!-- DESCOBRIR ONGS -->
+            <section id="descobrir">
+                <div id="div-descobrir">
+                    <h2>Descobrir ONGs</h2>
+                    <form action="#"> <input type="search" placeholder="Pesquisar ONG"> </form>
+                    <details>
+                        <summary>Todas</summary>
+                    </details>
+                </div>
+                <div id="ongs"> <a href="#" class="cards"> <img
+                            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="">
+                        <h3>Lorem ipsum dolor.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h4>Educação . Reforço . Comunidade</h4>
+                    </a> <a href="#" class="cards"> <img
+                            src="https://images.unsplash.com/photo-1509099836639-18ba1795216d" alt="">
+                        <h3>Lorem ipsum dolor.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h4>Educação . Reforço . Comunidade</h4>
+                    </a> <a href="#" class="cards"> <img
+                            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18" alt="">
+                        <h3>Lorem ipsum dolor.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h4>Educação . Reforço . Comunidade</h4>
+                    </a> </div>
+            </section> <!-- FALE CONOSCO -->
+           <section id="fale_conosco">
+                <h2 id="h2-fale_conosco">Fale conosco</h2>
+
+                <div id="conteudo-fale_conosco">
+                    <div id="div-fale_conosco">
+                        <h3 id="h3-fale_conosco">Lorem Ipsum</h3>
+                        <p class="p-fale_conosco">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <p class="p-fale_conosco">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <form action="#" method="post" id="form-fale_conosco">
+                        <label for="nome">Nome:</label>
+                        <input id="nome" name="nome" type="text" placeholder="Digite seu nome..." required class="entrada-form">
+
+                        <label for="email">E-mail:</label>
+                        <input id="email" name="email" type="email" placeholder="Digite seu e-mail..." required class="entrada-form">
+
+                        <label for="ajuda">Como podemos ajudar:</label>
+                        <select id="ajuda" name="ajuda" required class="entrada-form">
+                            <option value="">Selecione uma opção</option>
+                            <option value="voluntario">Quero ser voluntário</option>
+                            <option value="ong">Quero cadastrar uma ONG</option>
+                            <option value="ajuda">Preciso de ajuda</option>
+                        </select>
+
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea name="mensagem" id="mensagem" rows="4" placeholder="Escreva sua mensagem..." required class="entrada-form"></textarea>
+                        <button id="botao-fale_conosco" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </section>
+        </main> <!-- FOOTER -->
+        <footer>
+            <div id="div-footer">
+                <h2 class="h2-logo">Conecta Itape</h2>
+                <p id="p-local"><i class="fa-solid fa-location-dot"></i> Itapetininga - SP</p>
+            </div>
+            <hr id="hr-footer">
+            <p id="p-footer">© 2026 IFSP Campus Itapetininga • Todos os direitos reservados</p>
+        </footer>
     </div>
 </body>
+
 </html>
