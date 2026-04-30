@@ -1,101 +1,269 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mobile-fist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Conecta Itape</title>
 </head>
 
 <body>
     <div id="site">
-        <!-- CABEÇALHO -->
         <header id="cabecalho">
-            <h2 class="h2-logo">Conecta Itape</h2>
-            <nav>
+            <a class="h2-logo" href="#cabecalho">Conecta Itape</a>
+
+            <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"
+                aria-label="Abrir menu de navegacao">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="nav-principal">
                 <ul id="ul-cabecalho">
-                    <li><a class="a-cabecalho" href="#cabecalho">Início</a></li>
+                    <li><a class="a-cabecalho" href="#cabecalho">Inicio</a></li>
                     <li><a class="a-cabecalho" href="#descobrir">Descobrir ONGs</a></li>
-                    <li><a class="a-cabecalho" href="#">Impacto</a></li>
+                    <li><a class="a-cabecalho" href="#impacto">Impacto</a></li>
                     <li><a class="a-cabecalho" href="#fale_conosco">Fale Conosco</a></li>
                 </ul>
             </nav>
         </header>
-        <main> <!-- DESTAQUE -->
+
+        <main>
             <section id="destaque">
-                <h1 id="h1-destaque">Lorem, ipsum dolor</h1>
-                <p id="p-destaque"> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> <a href="#descobrir"
-                    id="botao-destaque">Ver ONGs</a>
-            </section> <!-- DESCOBRIR ONGS -->
-            <section id="descobrir">
-                <div id="div-descobrir">
-                    <h2>Descobrir ONGs</h2>
-                    <form action="#"> <input type="search" placeholder="Pesquisar ONG"> </form>
-                    <details>
-                        <summary>Todas</summary>
-                    </details>
-                </div>
-                <div id="ongs"> <a href="#" class="cards"> <img
-                            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <h4>Educação . Reforço . Comunidade</h4>
-                    </a> <a href="#" class="cards"> <img
-                            src="https://images.unsplash.com/photo-1509099836639-18ba1795216d" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <h4>Educação . Reforço . Comunidade</h4>
-                    </a> <a href="#" class="cards"> <img
-                            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <h4>Educação . Reforço . Comunidade</h4>
-                    </a> </div>
-            </section> <!-- FALE CONOSCO -->
-           <section id="fale_conosco">
-                <h2 id="h2-fale_conosco">Fale conosco</h2>
-
-                <div id="conteudo-fale_conosco">
-                    <div id="div-fale_conosco">
-                        <h3 id="h3-fale_conosco">Lorem Ipsum</h3>
-                        <p class="p-fale_conosco">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                        <p class="p-fale_conosco">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-
-                    <hr>
-
-                    <form action="#" method="post" id="form-fale_conosco">
-                        <label for="nome">Nome:</label>
-                        <input id="nome" name="nome" type="text" placeholder="Digite seu nome..." required class="entrada-form">
-
-                        <label for="email">E-mail:</label>
-                        <input id="email" name="email" type="email" placeholder="Digite seu e-mail..." required class="entrada-form">
-
-                        <label for="ajuda">Como podemos ajudar:</label>
-                        <select id="ajuda" name="ajuda" required class="entrada-form">
-                            <option value="">Selecione uma opção</option>
-                            <option value="voluntario">Quero ser voluntário</option>
-                            <option value="ong">Quero cadastrar uma ONG</option>
-                            <option value="ajuda">Preciso de ajuda</option>
-                        </select>
-
-                        <label for="mensagem">Mensagem:</label>
-                        <textarea name="mensagem" id="mensagem" rows="4" placeholder="Escreva sua mensagem..." required class="entrada-form"></textarea>
-                        <button id="botao-fale_conosco" type="submit">Enviar</button>
-                    </form>
+                <div class="section-inner section-inner--hero">
+                    <p class="section-eyebrow">Conectando pessoas e causas locais</p>
+                    <h1 id="h1-destaque">Apoie projetos que transformam Itapetininga</h1>
+                    <p id="p-destaque">
+                        Descubra ONGs, iniciativas sociais e oportunidades reais para gerar impacto com tempo, doacoes e
+                        parcerias.
+                    </p>
+                    <a href="#descobrir" id="botao-destaque">Ver ONGs</a>
                 </div>
             </section>
-        </main> <!-- FOOTER -->
+
+            <section id="descobrir">
+                <div class="section-inner section-inner--wide">
+                    <div id="div-descobrir">
+                        <div>
+                            <p class="section-eyebrow section-eyebrow--green">Encontre uma causa</p>
+                            <h2>Descobrir ONGs</h2>
+                        </div>
+
+                        <form action="#">
+                            <label class="sr-only" for="pesquisa-ong">Pesquisar ONG</label>
+                            <input id="pesquisa-ong" type="search" placeholder="Pesquisar ONG">
+                        </form>
+                    </div>
+
+                    <div id="ongs">
+                        <a href="#" class="cards">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+                                alt="Pessoa apoiando uma iniciativa social">
+                            <h3>Educar para Transformar</h3>
+                            <p>Reforco escolar, acolhimento e atividades de formacao para criancas e adolescentes.</p>
+                            <h4>Educacao • Reforco • Comunidade</h4>
+                        </a>
+
+                        <a href="#" class="cards">
+                            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d"
+                                alt="Voluntarios em acao social">
+                            <h3>Rede Cuidar</h3>
+                            <p>Apoio a familias em situacao de vulnerabilidade com campanhas e atendimento solidario.</p>
+                            <h4>Solidariedade • Doacao • Cuidado</h4>
+                        </a>
+
+                        <a href="#" class="cards">
+                            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18"
+                                alt="Projeto social com jovens">
+                            <h3>Futuro em Movimento</h3>
+                            <p>Projetos culturais e esportivos que ampliam oportunidades para jovens da cidade.</p>
+                            <h4>Cultura • Juventude • Impacto</h4>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="impacto">
+                <div class="section-inner section-inner--wide">
+                    <div class="impacto-header">
+                        <h2>Impacto</h2>
+                    </div>
+
+                    <div class="impacto-carousel" data-impacto-carousel>
+                        <button class="impacto-arrow impacto-arrow--prev" type="button" data-impacto-prev
+                            aria-label="Slide anterior">
+                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="impacto-stage">
+                            <article class="impacto-slide is-active" data-impacto-slide>
+                                <div class="impacto-shell">
+                                    <div class="impacto-media">
+                                        <span class="impacto-badge">
+                                            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                                            Comunidade
+                                        </span>
+                                        <img src="./img/carrossel/instituto-nosso-lar/fotografia-Instituto-Nosso-Lar-Horizontal-Desktop.jpg"
+                                            alt="Pessoas reunidas em uma acao coletiva de apoio comunitario">
+                                    </div>
+
+                                    <div class="impacto-copy">
+                                        <p class="impacto-headline">Juntos geramos impacto real</p>
+                                        <p class="impacto-text">
+                                            O Conecta Itape aproxima pessoas, projetos e redes de apoio que fortalecem o
+                                            acolhimento local. Cada encontro vira mais cuidado, mais presenca e mais chance
+                                            de transformar trajetorias com dignidade.
+                                        </p>
+                                        <a href="#descobrir" class="impacto-cta">Veja mais sobre a comunidade</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="impacto-slide" data-impacto-slide>
+                                <div class="impacto-shell">
+                                    <div class="impacto-media">
+                                        <span class="impacto-badge">
+                                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+                                            Acolhimento
+                                        </span>
+                                        <img src="./img/carrossel/sos-animais/fotografia-SOS-Animais-Vertical-Mobile.jpg"
+                                            alt="Momento de cuidado e acolhimento em um projeto social">
+                                    </div>
+
+                                    <div class="impacto-copy">
+                                        <p class="impacto-headline">Pessoas e projetos que mudam vidas</p>
+                                        <p class="impacto-text">
+                                            A vitrine institucional ajuda iniciativas sociais a contarem sua historia com
+                                            clareza e credibilidade. Isso amplia apoio, engaja voluntarios e cria uma ponte
+                                            mais direta entre quem quer ajudar e quem esta fazendo a diferenca.
+                                        </p>
+                                        <a href="#descobrir" class="impacto-cta">Veja mais sobre a comunidade</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="impacto-slide" data-impacto-slide>
+                                <div class="impacto-shell">
+                                    <div class="impacto-media">
+                                        <span class="impacto-badge">
+                                            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+                                            Impacto social
+                                        </span>
+                                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80"
+                                            alt="Voluntarios reunidos em um projeto social comunitario">
+                                    </div>
+
+                                    <div class="impacto-copy">
+                                        <p class="impacto-headline">Pequenas acoes, grandes mudancas</p>
+                                        <p class="impacto-text">
+                                            Quando uma ONG ganha visibilidade, toda a comunidade responde melhor. O impacto
+                                            aparece em novas parcerias, campanhas mais fortes e uma rede de confianca que
+                                            sustenta resultados de longo prazo.
+                                        </p>
+                                        <a href="#descobrir" class="impacto-cta">Veja mais sobre a comunidade</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <button class="impacto-arrow impacto-arrow--next" type="button" data-impacto-next
+                            aria-label="Proximo slide">
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="impacto-dots" aria-label="Indicadores do carrossel">
+                        <button class="impacto-dot is-active" type="button" data-impacto-dot aria-label="Ir para o slide 1"
+                            aria-current="true"></button>
+                        <button class="impacto-dot" type="button" data-impacto-dot aria-label="Ir para o slide 2"
+                            aria-current="false"></button>
+                        <button class="impacto-dot" type="button" data-impacto-dot aria-label="Ir para o slide 3"
+                            aria-current="false"></button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fale_conosco">
+                <div class="section-inner section-inner--wide">
+                    <div class="fale-header">
+                        <h2 id="h2-fale_conosco">Fale Conosco</h2>
+                    </div>
+
+                    <div id="conteudo-fale_conosco">
+                        <div id="div-fale_conosco">
+                            <div class="faq-copy">
+                                <h3 id="h3-fale_conosco">Duvidas Frequentes</h3>
+                                <p class="p-fale_conosco">
+                                    Reunimos respostas rapidas para reduzir atrito e deixar o contato mais objetivo.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+                                <details class="faq-item" open>
+                                    <summary>Como cadastrar uma ONG na plataforma?</summary>
+                                    <p>Envie seus dados pelo formulario e selecione a opcao de cadastro. A equipe pode
+                                        retornar para validar informacoes antes da publicacao.</p>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>Posso me voluntariar mesmo sem experiencia previa?</summary>
+                                    <p>Sim. Muitas iniciativas precisam de apoio em comunicacao, organizacao, eventos,
+                                        arrecadacao e acoes presenciais.</p>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>Quanto tempo demora para receber retorno?</summary>
+                                    <p>O ideal e exibir aqui seu prazo oficial de resposta. Enquanto isso, ja deixamos a
+                                        interface preparada para reforcar expectativa de retorno.</p>
+                                </details>
+                            </div>
+                        </div>
+
+                        <div class="fale-divider" aria-hidden="true"></div>
+
+                        <div class="form-shell">
+                            <form action="#" method="post" id="form-fale_conosco" novalidate>
+                                <label for="nome">Nome:</label>
+                                <input id="nome" name="nome" type="text" placeholder="Digite seu nome..." required
+                                    class="entrada-form">
+
+                                <label for="email">Email:</label>
+                                <input id="email" name="email" type="email" placeholder="Digite seu endereco de email..."
+                                    required class="entrada-form">
+
+                                <label for="ajuda">Como podemos ajudar:</label>
+                                <select id="ajuda" name="ajuda" required class="entrada-form">
+                                    <option value="">Quero...</option>
+                                    <option value="voluntario">Quero ser voluntario</option>
+                                    <option value="ong">Quero cadastrar uma ONG</option>
+                                    <option value="parceria">Quero falar sobre parceria</option>
+                                    <option value="ajuda">Preciso de ajuda</option>
+                                </select>
+
+                                <label for="mensagem">Mensagem:</label>
+                                <textarea name="mensagem" id="mensagem" rows="5"
+                                    placeholder="Escreva uma mensagem para nos..." required
+                                    class="entrada-form"></textarea>
+
+                                <div class="form-actions">
+                                    <button id="botao-fale_conosco" type="submit">Enviar</button>
+                                    <p id="form-status" class="form-status" aria-live="polite"></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
         <footer>
             <div id="div-footer">
                 <h2 class="h2-logo">Conecta Itape</h2>
-                <p id="p-local"><i class="fa-solid fa-location-dot"></i> Itapetininga - SP</p>
+                <p id="p-local"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Itapetininga - SP</p>
             </div>
             <hr id="hr-footer">
             <p id="p-footer">© 2026 IFSP Campus Itapetininga • Todos os direitos reservados</p>
