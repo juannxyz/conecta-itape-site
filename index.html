@@ -5,14 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <title>Conecta Itape</title>
 </head>
 
 <body>
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteudo principal</a>
+
     <div id="site">
-        <header id="cabecalho">
+        <header id="cabecalho" role="banner">
             <a class="h2-logo" href="#cabecalho">Conecta Itape</a>
 
             <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"
@@ -22,7 +27,7 @@
                 <span></span>
             </button>
 
-            <nav id="nav-principal">
+            <nav id="nav-principal" aria-label="Navegacao principal">
                 <ul id="ul-cabecalho">
                     <li><a class="a-cabecalho" href="#cabecalho">Inicio</a></li>
                     <li><a class="a-cabecalho" href="#descobrir">Descobrir ONGs</a></li>
@@ -32,25 +37,124 @@
             </nav>
         </header>
 
-        <main>
-            <section id="destaque">
-                <div class="section-inner section-inner--hero">
-                    <p class="section-eyebrow">Conectando pessoas e causas locais</p>
-                    <h1 id="h1-destaque">Apoie projetos que transformam Itapetininga</h1>
-                    <p id="p-destaque">
-                        Descubra ONGs, iniciativas sociais e oportunidades reais para gerar impacto com tempo, doacoes e
-                        parcerias.
-                    </p>
-                    <a href="#descobrir" id="botao-destaque">Ver ONGs</a>
+        <main id="conteudo-principal">
+            <section id="hero" aria-label="Destaques">
+                <div class="hero-slider" data-hero-slider aria-roledescription="carrossel" aria-label="Slides de destaque">
+                    <div class="hero-live-region sr-only" aria-live="polite" aria-atomic="true"></div>
+                    <div class="hero-slide is-active" data-hero-slide role="group" aria-roledescription="slide" aria-label="Slide 1 de 4"
+                        style="background-image:url('./img/hero/slide-1.png')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <p class="hero-eyebrow"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i> Lorem Ipsum</p>
+                            <h1>Lorem ipsum <span class="hero-highlight">dolor sit</span> amet</h1>
+                            <p class="hero-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <div class="hero-actions">
+                                <a href="#descobrir" class="btn btn--primary">Lorem Ipsum</a>
+                                <a href="#sobre" class="btn btn--outline">Lorem Ipsum</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-slide" data-hero-slide role="group" aria-roledescription="slide" aria-label="Slide 2 de 4" aria-hidden="true"
+                        style="background-image:url('./img/hero/slide-2.png')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <p class="hero-eyebrow"><i class="fa-solid fa-users" aria-hidden="true"></i> Lorem Ipsum</p>
+                            <h1>Ut enim ad <span class="hero-highlight">minim veniam</span></h1>
+                            <p class="hero-sub">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                nisi ut aliquip ex ea commodo consequat.</p>
+                            <div class="hero-actions">
+                                <a href="#descobrir" class="btn btn--primary">Lorem Ipsum</a>
+                                <a href="#fale_conosco" class="btn btn--outline">Lorem Ipsum</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-slide" data-hero-slide role="group" aria-roledescription="slide" aria-label="Slide 3 de 4" aria-hidden="true"
+                        style="background-image:url('./img/hero/slide-3.png')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <p class="hero-eyebrow"><i class="fa-solid fa-seedling" aria-hidden="true"></i> Lorem Ipsum</p>
+                            <h1>Duis aute irure <span class="hero-highlight">dolor reprehenderit</span></h1>
+                            <p class="hero-sub">Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur.</p>
+                            <div class="hero-actions">
+                                <a href="#sobre" class="btn btn--primary">Lorem Ipsum</a>
+                                <a href="#impacto" class="btn btn--outline">Lorem Ipsum</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-slide" data-hero-slide role="group" aria-roledescription="slide" aria-label="Slide 4 de 4" aria-hidden="true"
+                        style="background-image:url('./img/hero/slide-4.png')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <p class="hero-eyebrow"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Lorem Ipsum</p>
+                            <h1>Excepteur sint <span class="hero-highlight">occaecat cupidatat</span></h1>
+                            <p class="hero-sub">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                officia deserunt mollit anim id est laborum.</p>
+                            <div class="hero-actions">
+                                <a href="#descobrir" class="btn btn--primary">Lorem Ipsum</a>
+                                <a href="#fale_conosco" class="btn btn--outline">Lorem Ipsum</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-controls" role="group" aria-label="Controles do carrossel">
+                    <button class="hero-arrow hero-arrow--prev" type="button" data-hero-prev
+                        aria-label="Slide anterior">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="hero-dots" data-hero-dots role="tablist" aria-label="Selecionar slide">
+                        <button class="hero-dot is-active" type="button" data-hero-dot role="tab"
+                            aria-selected="true" aria-label="Slide 1"></button>
+                        <button class="hero-dot" type="button" data-hero-dot role="tab"
+                            aria-selected="false" aria-label="Slide 2"></button>
+                        <button class="hero-dot" type="button" data-hero-dot role="tab"
+                            aria-selected="false" aria-label="Slide 3"></button>
+                        <button class="hero-dot" type="button" data-hero-dot role="tab"
+                            aria-selected="false" aria-label="Slide 4"></button>
+                    </div>
+                    <button class="hero-arrow hero-arrow--next" type="button" data-hero-next
+                        aria-label="Proximo slide">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
                 </div>
             </section>
 
-            <section id="descobrir">
+            <section id="sobre" aria-label="Sobre nos">
+                <div class="sobre-inner">
+                    <div class="sobre-grid">
+                        <div class="sobre-media">
+                            <div class="sobre-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+                                    alt="Lorem ipsum dolor sit amet">
+                            </div>
+                        </div>
+                        <div class="sobre-copy">
+                            <p class="sobre-eyebrow">Lorem ipsum</p>
+                            <h2>Lorem ipsum dolor sit amet consectetur</h2>
+                            <p class="sobre-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                            <p class="sobre-text">
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <a href="#descobrir" class="btn btn--primary">Lorem Ipsum</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="descobrir" aria-labelledby="titulo-descobrir">
                 <div class="section-inner section-inner--wide">
                     <div id="div-descobrir">
                         <div>
                             <p class="section-eyebrow section-eyebrow--green">Encontre uma causa</p>
-                            <h2>Descobrir ONGs</h2>
+                            <h2 id="titulo-descobrir">Descobrir ONGs</h2>
                         </div>
 
                         <form action="#">
@@ -87,13 +191,13 @@
                 </div>
             </section>
 
-            <section id="impacto">
+            <section id="impacto" aria-labelledby="titulo-impacto">
                 <div class="section-inner section-inner--wide">
                     <div class="impacto-header">
-                        <h2>Impacto</h2>
+                        <h2 id="titulo-impacto">Impacto</h2>
                     </div>
 
-                    <div class="impacto-carousel" data-impacto-carousel>
+                    <div class="impacto-carousel" data-impacto-carousel aria-roledescription="carrossel" aria-label="Carrossel de impacto">
                         <button class="impacto-arrow impacto-arrow--prev" type="button" data-impacto-prev
                             aria-label="Slide anterior">
                             <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
@@ -176,7 +280,7 @@
                         </button>
                     </div>
 
-                    <div class="impacto-dots" aria-label="Indicadores do carrossel">
+                    <div class="impacto-dots" role="tablist" aria-label="Indicadores do carrossel">
                         <button class="impacto-dot is-active" type="button" data-impacto-dot aria-label="Ir para o slide 1"
                             aria-current="true"></button>
                         <button class="impacto-dot" type="button" data-impacto-dot aria-label="Ir para o slide 2"
@@ -187,10 +291,10 @@
                 </div>
             </section>
 
-            <section id="fale_conosco">
+            <section id="fale_conosco" aria-labelledby="titulo-fale-conosco">
                 <div class="section-inner section-inner--wide">
                     <div class="fale-header">
-                        <h2 id="h2-fale_conosco">Fale Conosco</h2>
+                        <h2 id="titulo-fale-conosco">Fale Conosco</h2>
                     </div>
 
                     <div id="conteudo-fale_conosco">
@@ -260,7 +364,7 @@
             </section>
         </main>
 
-        <footer>
+        <footer role="contentinfo">
             <div id="div-footer">
                 <h2 class="h2-logo">Conecta Itape</h2>
                 <p id="p-local"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Itapetininga - SP</p>
@@ -269,6 +373,10 @@
             <p id="p-footer">© 2026 IFSP Campus Itapetininga • Todos os direitos reservados</p>
         </footer>
     </div>
+
+    <button id="back-to-top" type="button" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
 </body>
 
 </html>
