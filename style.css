@@ -603,7 +603,16 @@ main {
     line-height: 1.5;
     color: #5d6940;
 }
-
+#ongContent{
+    background-color: #ece3bf;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.img-ong{
+    border-radius: 20px;
+}
 .faq-list {
     display: grid;
     gap: 12px;
