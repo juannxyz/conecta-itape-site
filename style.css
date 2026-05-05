@@ -332,6 +332,8 @@ main {
 }
 
 .impacto-header {
+    /* add margin-top para melhorar a visualização quando clicado no nav */
+    margin-top: 18px;
     margin-bottom: 18px;
     text-align: center;
 }
@@ -601,7 +603,16 @@ main {
     line-height: 1.5;
     color: #5d6940;
 }
-
+#ongContent{
+    background-color: #ece3bf;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.img-ong{
+    border-radius: 20px;
+}
 .faq-list {
     display: grid;
     gap: 12px;
@@ -740,6 +751,7 @@ footer {
 #hr-footer {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.4);
+    margin: 10px;
 }
 
 #p-local {
@@ -1506,8 +1518,29 @@ footer {
     #sobre {
         padding: 100px 0;
     }
+    /* cards pareciam achatados antes */
+    .cards {
+        min-height: 450px;
+        display: flex;
+        flex-direction: column;
+    }
+    .cards img{
+        object-fit: cover;
+    }
+    .cards h4{
+        margin-top: auto;
+    }
+    /* diminui o tamanho do carrosel não cabia na tela inteira */
+    .impacto-stage{
+        max-height: 800px;
+    }
+    .impacto-shell{
+        max-height: 650px;
+    }
+    .impacto-shell img{
+        max-height: 600px;
+    }
 }
-
 /* ===========================
    FOCUS VISIBLE - CONTEXTOS
    =========================== */

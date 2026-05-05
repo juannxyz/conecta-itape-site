@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem ipsum dolor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="site">
+        <header id="cabecalho" role="banner">
+            <a class="h2-logo" href="#cabecalho">Conecta Itape</a>
+
+            <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"
+                aria-label="Abrir menu de navegacao">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="nav-principal" aria-label="Navegacao principal">
+                <ul id="ul-cabecalho">
+                    <li><a class="a-cabecalho" href="#hero">Inicio</a></li>
+                    <li><a class="a-cabecalho" href="#descobrir">Descobrir ONGs</a></li>
+                    <li><a class="a-cabecalho" href="#impacto">Impacto</a></li>
+                    <li><a class="a-cabecalho" href="#fale_conosco">Fale Conosco</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="conteudo-principal">
+            <section id="ongContent">
+                <div>
+                    <figure style="max-width: 500px;">
+                        <img src="/img/imagens_exemplo/SOS_Animais/cachorro_em_retrato-SOS_Animais.jpg" alt="retrato de um cachorro" class="img-ong" style="max-width: 300px;">
+                    </figure>
+                    <div class="card-content-ong">
+                        <h2>ONG SOS Animais</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                
+            </section>
+        </main>
+        <footer>
+            <div id="div-footer">
+                <h2 class="h2-logo">Conecta Itape</h2>
+                <p id="p-local"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Itapetininga - SP</p>
+            </div>
+            <hr id="hr-footer">
+            <p id="p-footer">© 2026 IFSP Campus Itapetininga • Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <button id="back-to-top" type="button" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Vlibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+
+    
+</body>
+</html>
