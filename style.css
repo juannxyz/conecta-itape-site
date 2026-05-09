@@ -17,6 +17,11 @@ a {
     text-decoration: none;
 }
 
+h2 {
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.05;
+}
+
 button,
 input,
 select,
@@ -89,6 +94,17 @@ textarea {
     padding: 18px 20px;
     background: rgba(10, 80, 17, 0.92);
     backdrop-filter: blur(10px);
+    transition: transform 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+}
+
+#nav-hover-zone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    z-index: 19;
+    pointer-events: none;
 }
 
 #menu-toggle {
@@ -263,10 +279,13 @@ main {
 
 #div-descobrir h2,
 #impacto h2,
-#h2-fale_conosco,
+#h2-fale_conosco {
+    color: #187417;
+}
+
 #h3-fale_conosco {
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.08;
     color: #187417;
 }
 
@@ -840,7 +859,7 @@ footer {
 }
 
 .detalhe-card h2 {
-    font-size: 1.4rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
     font-weight: 900;
 }
 
@@ -929,7 +948,7 @@ footer {
     margin-bottom: 10px; 
 } 
 .modal-box h2 { 
-    font-size: 1.2rem; 
+    font-size: clamp(1.8rem, 4vw, 2.4rem); 
     margin-bottom: 10px; 
 } 
 .modal-box p { 
@@ -966,6 +985,23 @@ footer {
         opacity: 1;
         pointer-events: auto;
         transform: none;
+    }
+
+    body.nav-can-hide #nav-hover-zone {
+        pointer-events: auto;
+    }
+
+    body.nav-can-hide #cabecalho {
+        transform: translateY(calc(-100% - 12px));
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    body.nav-can-hide.nav-reveal #cabecalho,
+    body.nav-can-hide #cabecalho:focus-within {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 
     #ul-cabecalho {
@@ -1422,7 +1458,6 @@ footer {
 }
 
 .sobre-copy h2 {
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
     font-weight: 900;
     line-height: 1.15;
     color: var(--green-900);

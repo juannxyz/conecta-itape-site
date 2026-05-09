@@ -1,5 +1,8 @@
 const menuToggle = document.querySelector("#menu-toggle");
 const nav = document.querySelector("#nav-principal");
+const header = document.querySelector("#cabecalho");
+const navHoverZone = document.querySelector("#nav-hover-zone");
+const heroSection = document.querySelector("#hero");
 const form = document.querySelector("#form-fale_conosco");
 const formStatus = document.querySelector("#form-status");
 const submitButton = document.querySelector("#botao-fale_conosco");
@@ -11,6 +14,30 @@ const container = document.querySelector(".detalhe-imagem");
 
 let index = 0;
 let intervalo;
+let navHeaderHovered = false;
+let navZoneHovered = false;
+const desktopHoverNavMedia = window.matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)");
+
+function syncFloatingNav() {
+    if (!header || !heroSection) {
+        return;
+    }
+
+    const canHideNav =
+        desktopHoverNavMedia.matches &&
+        window.scrollY > heroSection.offsetHeight - header.offsetHeight;
+
+    document.body.classList.toggle("nav-can-hide", canHideNav);
+
+    if (!canHideNav) {
+        document.body.classList.remove("nav-reveal");
+        return;
+    }
+
+    const menuIsOpen = menuToggle?.getAttribute("aria-expanded") === "true";
+    const shouldReveal = navHeaderHovered || navZoneHovered || menuIsOpen || header.matches(":focus-within");
+    document.body.classList.toggle("nav-reveal", shouldReveal);
+}
 
 /* ===== MENU TOGGLE ===== */
 
@@ -19,12 +46,14 @@ if (menuToggle && nav) {
         const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
         menuToggle.setAttribute("aria-expanded", String(!isOpen));
         nav.classList.toggle("is-open", !isOpen);
+        syncFloatingNav();
     });
 
     nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
             menuToggle.setAttribute("aria-expanded", "false");
             nav.classList.remove("is-open");
+            syncFloatingNav();
         });
     });
 
@@ -33,9 +62,37 @@ if (menuToggle && nav) {
             menuToggle.setAttribute("aria-expanded", "false");
             nav.classList.remove("is-open");
             menuToggle.focus();
+            syncFloatingNav();
         }
     });
 }
+
+if (header && navHoverZone) {
+    header.addEventListener("mouseenter", () => {
+        navHeaderHovered = true;
+        syncFloatingNav();
+    });
+
+    header.addEventListener("mouseleave", () => {
+        navHeaderHovered = false;
+        syncFloatingNav();
+    });
+
+    navHoverZone.addEventListener("mouseenter", () => {
+        navZoneHovered = true;
+        syncFloatingNav();
+    });
+
+    navHoverZone.addEventListener("mouseleave", () => {
+        navZoneHovered = false;
+        syncFloatingNav();
+    });
+}
+
+window.addEventListener("scroll", syncFloatingNav, { passive: true });
+window.addEventListener("resize", syncFloatingNav);
+desktopHoverNavMedia.addEventListener?.("change", syncFloatingNav);
+syncFloatingNav();
 
 /* ===== FAQ ACCORDION ===== */
 
