@@ -1,8 +1,15 @@
+@font-face {
+    font-family: "Waffle Soft";
+    src: url("./font/Waffle Soft/MADE Waffle Soft PERSONAL USE.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 body {
@@ -10,11 +17,25 @@ body {
     overflow-x: hidden;
     background: #217601;
     color: white;
+    font-family: "Montserrat", Arial, sans-serif;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h2-logo,
+.a-cabecalho,
+.btn,
+.section-eyebrow {
+    font-family: "Waffle Soft", "Montserrat", Arial, sans-serif;
 }
 
 h2 {
@@ -85,16 +106,31 @@ textarea {
 }
 
 #cabecalho {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 20;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 20px;
-    background: rgba(10, 80, 17, 0.92);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
     transition: transform 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+}
+
+body.hero-past #cabecalho {
+    background: transparent;
+    backdrop-filter: none;
+}
+
+body.hero-past #cabecalho:hover,
+body.hero-past #cabecalho:focus-within,
+body.nav-can-hide.nav-reveal #cabecalho {
+    background: #217601;
+    backdrop-filter: blur(10px);
 }
 
 #nav-hover-zone {
@@ -115,11 +151,13 @@ textarea {
     width: 48px;
     height: 48px;
     padding: 0 11px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid transparent;
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.08);
+    background: transparent;
     color: white;
     cursor: pointer;
+    box-shadow: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 #menu-toggle span {
@@ -140,6 +178,14 @@ textarea {
 
 #menu-toggle[aria-expanded="true"] span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+#menu-toggle:hover,
+#menu-toggle:focus-visible,
+#menu-toggle[aria-expanded="true"] {
+    border-color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+    box-shadow: none;
 }
 
 #nav-principal {
@@ -622,16 +668,19 @@ main {
     line-height: 1.5;
     color: #5d6940;
 }
-#ongContent{
+
+#ongContent {
     background-color: #ece3bf;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.img-ong{
+
+.img-ong {
     border-radius: 20px;
 }
+
 .faq-list {
     display: grid;
     gap: 12px;
@@ -919,51 +968,57 @@ footer {
     cursor: pointer;
 }
 
-.modal { 
-    position: fixed; 
-    inset: 0; 
-    background: rgba(0,0,0,0.5); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    opacity: 0; 
-    pointer-events: none; 
-    transition: 0.3s; 
-    z-index: 999; 
-} 
-.modal.ativo { 
-    opacity: 1; 
-    pointer-events: auto; 
-} 
-.modal-box { 
-    background: #e7e2b8; 
-    padding: 25px; 
-    border-radius: 20px; 
-    max-width: 320px; 
-    text-align: center; 
-    color: #1b5e20; 
-} 
-.modal-icon { 
-    font-size: 40px; 
-    margin-bottom: 10px; 
-} 
-.modal-box h2 { 
-    font-size: clamp(1.8rem, 4vw, 2.4rem); 
-    margin-bottom: 10px; 
-} 
-.modal-box p { 
-    font-size: 0.9rem; 
-    margin-bottom: 20px; 
-} 
-#btn-continuar { 
-    background: #1b5e20; 
-    color: white; 
-    border: none; 
-    padding: 12px; 
-    border-radius: 999px; 
-    width: 100%; 
-    font-weight: bold; 
-    cursor: pointer; 
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.modal.ativo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background: #e7e2b8;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 320px;
+    text-align: center;
+    color: #1b5e20;
+}
+
+.modal-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.modal-box h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 10px;
+}
+
+.modal-box p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+#btn-continuar {
+    background: #1b5e20;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 999px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -1283,12 +1338,10 @@ footer {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(10, 61, 10, 0.82) 0%,
-        rgba(15, 82, 18, 0.6) 50%,
-        rgba(33, 118, 1, 0.4) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(178, 111, 88, 0.82) 0%,
+            rgba(178, 111, 88, 0.6) 50%,
+            rgba(178, 111, 88, 0.4) 100%);
 }
 
 .hero-content {
@@ -1349,6 +1402,27 @@ footer {
     animation: fadeInUp 0.6s 0.45s ease both;
 }
 
+.hero-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-actions .btn i {
+    font-size: 0.95em;
+    transition: transform 0.25s ease;
+}
+
+.hero-actions .btn:hover i,
+.hero-actions .btn:focus-visible i {
+    transform: translateX(3px);
+}
+
+.hero-actions .btn:hover,
+.hero-actions .btn:focus-visible {
+    transform: none;
+}
+
 /* ---- Controles do slider ---- */
 
 .hero-controls {
@@ -1395,7 +1469,7 @@ footer {
     height: 10px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -1403,7 +1477,7 @@ footer {
 .hero-dot.is-active {
     width: 28px;
     border-radius: var(--radius-full);
-    background: var(--gold);
+    background: #ffffff;
 }
 
 /* ===========================
@@ -1519,6 +1593,7 @@ footer {
         opacity: 0;
         transform: translateY(24px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1546,6 +1621,28 @@ footer {
     }
 }
 
+@media (max-width: 767px) {
+
+    .hero-controls {
+        gap: 0;
+        padding: 0;
+        background: transparent;
+        backdrop-filter: none;
+        bottom: 24px;
+    }
+
+    .hero-arrow {
+        display: none;
+    }
+
+    .hero-dots {
+        padding: 8px 12px;
+        border-radius: var(--radius-full);
+        background: rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(8px);
+    }
+}
+
 @media (min-width: 1024px) {
 
     .hero-content {
@@ -1553,32 +1650,48 @@ footer {
         max-width: 740px;
     }
 
+    .hero-actions {
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+
     #sobre {
         padding: 100px 0;
     }
+
     /* cards pareciam achatados antes */
     .cards {
         min-height: 450px;
         display: flex;
         flex-direction: column;
     }
-    .cards img{
+
+    .cards img {
         object-fit: cover;
     }
-    .cards h4{
+
+    .cards h4 {
         margin-top: auto;
     }
+
     /* diminui o tamanho do carrosel não cabia na tela inteira */
-    .impacto-stage{
+    .impacto-stage {
         max-height: 800px;
     }
-    .impacto-shell{
+
+    .impacto-shell {
         max-height: 650px;
     }
-    .impacto-shell img{
+
+    .impacto-shell img {
         max-height: 600px;
     }
 }
+
 /* ===========================
    FOCUS VISIBLE - CONTEXTOS
    =========================== */

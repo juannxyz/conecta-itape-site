@@ -23,9 +23,10 @@ function syncFloatingNav() {
         return;
     }
 
-    const canHideNav =
-        desktopHoverNavMedia.matches &&
-        window.scrollY > heroSection.offsetHeight - header.offsetHeight;
+    const hasPassedHero = window.scrollY > heroSection.offsetHeight - header.offsetHeight;
+    const canHideNav = desktopHoverNavMedia.matches && hasPassedHero;
+
+    document.body.classList.toggle("hero-past", hasPassedHero);
 
     document.body.classList.toggle("nav-can-hide", canHideNav);
 
@@ -192,6 +193,9 @@ const heroSlider = document.querySelector("[data-hero-slider]");
 let heroIndex = 0;
 let heroTimer = null;
 let heroPaused = false;
+let heroTouchStartX = 0;
+let heroTouchStartY = 0;
+let heroTouchActive = false;
 
 function goToHeroSlide(index) {
     heroIndex = (index + heroSlides.length) % heroSlides.length;
@@ -244,6 +248,49 @@ if (heroSlides.length > 1) {
         heroSlider.addEventListener("mouseleave", () => { heroPaused = false; startHeroAuto(); });
         heroSlider.addEventListener("focusin", () => { heroPaused = true; stopHeroAuto(); });
         heroSlider.addEventListener("focusout", () => { heroPaused = false; startHeroAuto(); });
+        heroSlider.addEventListener("touchstart", (event) => {
+            const firstTouch = event.touches[0];
+            if (!firstTouch) {
+                return;
+            }
+
+            heroTouchStartX = firstTouch.clientX;
+            heroTouchStartY = firstTouch.clientY;
+            heroTouchActive = true;
+            heroPaused = true;
+            stopHeroAuto();
+        }, { passive: true });
+
+        heroSlider.addEventListener("touchend", (event) => {
+            if (!heroTouchActive) {
+                return;
+            }
+
+            const lastTouch = event.changedTouches[0];
+            heroTouchActive = false;
+            heroPaused = false;
+
+            if (!lastTouch) {
+                startHeroAuto();
+                return;
+            }
+
+            const deltaX = lastTouch.clientX - heroTouchStartX;
+            const deltaY = lastTouch.clientY - heroTouchStartY;
+            const swipeThreshold = 45;
+
+            if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+                goToHeroSlide(heroIndex + (deltaX < 0 ? 1 : -1));
+            }
+
+            startHeroAuto();
+        }, { passive: true });
+
+        heroSlider.addEventListener("touchcancel", () => {
+            heroTouchActive = false;
+            heroPaused = false;
+            startHeroAuto();
+        }, { passive: true });
     }
 
     goToHeroSlide(0);
