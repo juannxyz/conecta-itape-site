@@ -387,3 +387,84 @@ document.addEventListener("keydown", (e) => {
         modal?.classList.remove("ativo");
     }
 });
+
+
+/* ===== Criação de cards ===== */
+
+const iconesCategorias = {
+    Educacao: "fa-solid fa-graduation-cap",
+    Solidariedade: "fa-solid fa-hand-holding-heart",
+    Cultura: "fa-solid fa-people-group",
+    Animais: "fa-solid fa-paw",
+    MeioAmbiente: "fa-solid fa-leaf",
+    Saude: "fa-solid fa-heart-pulse",
+    Esporte: "fa-solid fa-futbol",
+};
+
+const lista_ongs = [
+    {
+        id: 1,
+        nome: "Educar para Transformar",
+        descricao:"Reforco escolar, acolhimento e atividades de formacao para criancas e adolescentes.",
+        categoriaPrincipal: "Educacao",
+        categorias: ["Educacao", "Reforco", "Comunidade"],
+        local: "Itapetininga",
+        instagram: "https://instagram.com/",
+        facebook: "https://facebook.com/",
+        imagens: [
+            {
+                src: "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f",
+                alt: "Criancas em atividade coletiva com educadores."
+            },
+
+            {
+                src: "img/imagens_exemplo/educacao/criancas_aprendendo.jpg",
+                alt: "Criancas estudando com professora."
+            },
+
+            {
+                src: "img/imagens_exemplo/educacao/criancas_na_sala_de_aula.jpg",
+                alt: "Criancas participando de atividade educativa."
+            }
+        ]
+    }
+];
+const div_ongs = document.querySelector("#ongs");
+
+lista_ongs.forEach((ong) => {
+    const card_ong = document.createElement("a");
+    card_ong.classList.add("cards");
+
+    card_ong.href = `detalhes.html?id=${ong.id}`;
+
+    const span_ong = document.createElement("span");
+    span_ong.classList.add("card-badge");
+    const icone =
+        iconesCategorias[ong.categoriaPrincipal]
+        || "fa-solid fa-circle-info";
+
+    span_ong.innerHTML = `
+        <i class="${icone}"></i>
+        ${ong.categoriaPrincipal}
+    `;
+
+    const img_ong = document.createElement("img");
+    img_ong.src = ong.imagens[0].src;
+    img_ong.alt = ong.imagens[0].alt;
+
+    const nome_ong = document.createElement("h3");
+    nome_ong.textContent = ong.nome;
+
+    const descricao_ong = document.createElement("p");
+    descricao_ong.textContent = ong.descricao;
+
+    const categorias_ong = document.createElement("h4");
+    categorias_ong.textContent = ong.categorias.join(" • ");
+
+    card_ong.appendChild(span_ong);
+    card_ong.appendChild(img_ong);
+    card_ong.appendChild(nome_ong);
+    card_ong.appendChild(descricao_ong);
+    card_ong.appendChild(categorias_ong);
+    div_ongs.appendChild(card_ong);
+});
