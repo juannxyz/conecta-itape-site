@@ -8,9 +8,10 @@ const formStatus = document.querySelector("#form-status");
 const submitButton = document.querySelector("#botao-fale_conosco");
 const faqItems = Array.from(document.querySelectorAll(".faq-item"));
 const impactoCarousel = document.querySelector("[data-impacto-carousel]");
-const imagens = document.querySelectorAll(".detalhe-imagem img");
-const carrossel_fotos = document.querySelectorAll(".carrossel-fotos span");
-const container = document.querySelector(".detalhe-imagem");
+
+let imagens;
+let carrossel_fotos;
+let container;
 
 let index = 0;
 let intervalo;
@@ -333,22 +334,6 @@ function pararAutoPlay() {
     clearInterval(intervalo);
 }
 
-if (imagens.length > 0 && container && carrossel_fotos.length > 0) {
-
-    carrossel_fotos.forEach((fotos, i) => {
-        fotos.addEventListener("click", () => {
-            pararAutoPlay();
-            mostrarImagem(i);
-            iniciarAutoPlay();
-        });
-    });
-
-    container.addEventListener("mouseenter", pararAutoPlay);
-    container.addEventListener("mouseleave", iniciarAutoPlay);
-
-    iniciarAutoPlay();
-}
-
 const modal = document.getElementById("modal-redirect");
 const btnContinuar = document.getElementById("btn-continuar");
 
@@ -406,11 +391,14 @@ const lista_ongs = [
         id: 1,
         nome: "Educar para Transformar",
         descricao:"Reforco escolar, acolhimento e atividades de formacao para criancas e adolescentes.",
+        descricaoCompleta:"A ONG atua oferecendo reforco escolar, acolhimento social e oficinas educativas para criancas e adolescentes em situacao de vulnerabilidade.",
         categoriaPrincipal: "Educacao",
         categorias: ["Educacao", "Reforco", "Comunidade"],
         local: "Itapetininga",
         instagram: "https://instagram.com/",
         facebook: "https://facebook.com/",
+        mapa:"https://www.google.com/maps?q=Itapetininga&output=embed",
+        linkVoluntario:"https://exemplo-voluntario.com",
         imagens: [
             {
                 src: "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f",
@@ -427,44 +415,169 @@ const lista_ongs = [
                 alt: "Criancas participando de atividade educativa."
             }
         ]
+    },
+    {
+        id: 2,
+        nome: "Patinhas do Bem",
+        descricao:"Resgate, cuidado e adoção responsável de animais abandonados.",
+        descricaoCompleta:"A ONG Patinhas do Bem atua no resgate de cães e gatos em situação de abandono, oferecendo cuidados veterinários, alimentação e campanhas de adoção responsável.",
+        categoriaPrincipal: "Animais",
+        categorias: ["Animais", "Adoção", "Resgate"],
+        local: "Itapetininga",
+        instagram: "https://instagram.com/",
+        facebook: "https://facebook.com/",
+        mapa:"https://www.google.com/maps?q=Itapetininga&output=embed",
+        linkVoluntario:"https://exemplo-voluntario.com",
+        imagens: [
+            {
+                src: "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop",
+                alt: "Cachorro sendo cuidado por voluntários."
+            },
+            {
+                src: "https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=1200&auto=format&fit=crop",
+                alt: "Gato em abrigo esperando adoção."
+            },
+            {
+                src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop",
+                alt: "Animais resgatados em campanha de adoção."
+            }
+        ]
+    },
+
+    {
+        id: 3,
+        nome: "Movimento Verde Vivo",
+        descricao:"Projetos ambientais, reciclagem e ações de conscientização ecológica.",
+        descricaoCompleta:"O Movimento Verde Vivo promove ações de preservação ambiental, plantio de árvores, reciclagem e educação ambiental em comunidades e escolas.",
+        categoriaPrincipal: "MeioAmbiente",
+        categorias: ["Meio Ambiente", "Sustentabilidade", "Reciclagem"],
+        local: "Itapetininga",
+        instagram: "https://instagram.com/",
+        facebook: "https://facebook.com/",
+        mapa:"https://www.google.com/maps?q=Itapetininga&output=embed",
+        linkVoluntario:"https://exemplo-voluntario.com",
+        imagens: [
+            {
+                src: "https://images.unsplash.com/photo-1492496913980-501348b61469?q=80&w=1200&auto=format&fit=crop",
+                alt: "Voluntários plantando árvores."
+            },
+            {
+                src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1200&auto=format&fit=crop",
+                alt: "Ação de limpeza em área verde."
+            },
+            {
+                src: "https://images.unsplash.com/photo-1528323273322-d81458248d40?q=80&w=1200&auto=format&fit=crop",
+                alt: "Campanha de conscientização ambiental."
+            }
+        ]
     }
 ];
 const div_ongs = document.querySelector("#ongs");
 
-lista_ongs.forEach((ong) => {
+
+if (div_ongs) {
+    lista_ongs.forEach((ong) => {
     const card_ong = document.createElement("a");
     card_ong.classList.add("cards");
-
     card_ong.href = `detalhes.html?id=${ong.id}`;
-
     const span_ong = document.createElement("span");
     span_ong.classList.add("card-badge");
-    const icone =
-        iconesCategorias[ong.categoriaPrincipal]
-        || "fa-solid fa-circle-info";
-
-    span_ong.innerHTML = `
-        <i class="${icone}"></i>
-        ${ong.categoriaPrincipal}
-    `;
-
+    const icone = iconesCategorias[ong.categoriaPrincipal] || "fa-solid fa-circle-info";
+    span_ong.innerHTML = `<i class="${icone}"></i>${ong.categoriaPrincipal}`;
     const img_ong = document.createElement("img");
     img_ong.src = ong.imagens[0].src;
     img_ong.alt = ong.imagens[0].alt;
-
     const nome_ong = document.createElement("h3");
     nome_ong.textContent = ong.nome;
-
     const descricao_ong = document.createElement("p");
     descricao_ong.textContent = ong.descricao;
-
     const categorias_ong = document.createElement("h4");
     categorias_ong.textContent = ong.categorias.join(" • ");
-
     card_ong.appendChild(span_ong);
     card_ong.appendChild(img_ong);
     card_ong.appendChild(nome_ong);
     card_ong.appendChild(descricao_ong);
     card_ong.appendChild(categorias_ong);
     div_ongs.appendChild(card_ong);
-});
+    });
+}
+
+/* ===== PAGINA DETALHES ===== */
+
+const detalheContainer = document.querySelector("#detalhe-ong");
+
+if (detalheContainer) {
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("id"));
+    const ong = lista_ongs.find(item => item.id === id);
+    if (!ong) {
+        detalheContainer.innerHTML = `
+            <div class="detalhe-card">
+                <h2>ONG nao encontrada</h2>
+                <a href="index.html">Voltar</a>
+            </div>
+        `;
+    } else {
+        document.title = `EntreCausas | ${ong.nome}`;
+        document.querySelector("#titulo-ong").textContent = ong.nome;
+        document.querySelector(".local").innerHTML = `
+            <i class="fa-solid fa-location-dot"></i>
+            ${ong.local}
+        `;
+        document.querySelector(".descricao").textContent = ong.descricaoCompleta || ong.descricao;
+        document.querySelector(".btn-instagram").href = ong.instagram;
+        document.querySelector(".btn-facebook").href = ong.facebook;
+        const iframe = document.querySelector(".mapa iframe");
+        iframe.src = ong.mapa;
+        const detalheImagem = document.querySelector(".detalhe-imagem");
+
+        detalheImagem.innerHTML = "";
+
+        ong.imagens.forEach((imagem, i) => {
+            const img = document.createElement("img");
+            img.src = imagem.src;
+            img.alt = imagem.alt;
+            if (i === 0) {
+                img.classList.add("ativa");
+            }
+            detalheImagem.appendChild(img);
+        });
+
+        const dots = document.createElement("div");
+        dots.classList.add("carrossel-fotos");
+        ong.imagens.forEach((_, i) => {
+            const span = document.createElement("span");
+            if (i === 0) {
+                span.classList.add("ativo");
+            }
+            dots.appendChild(span);
+        });
+        detalheImagem.appendChild(dots);
+        iniciarCarrosselDetalhes();
+    }
+}
+
+function iniciarCarrosselDetalhes() {
+
+    imagens = document.querySelectorAll(".detalhe-imagem img");
+
+    carrossel_fotos = document.querySelectorAll(".carrossel-fotos span");
+
+    container = document.querySelector(".detalhe-imagem");
+    if (
+        imagens.length > 0 &&
+        container &&
+        carrossel_fotos.length > 0
+    ) {
+        carrossel_fotos.forEach((fotos, i) => {
+            fotos.addEventListener("click", () => {
+                pararAutoPlay();
+                mostrarImagem(i);
+                iniciarAutoPlay();
+            });
+        });
+        container.addEventListener("mouseenter", pararAutoPlay);
+        container.addEventListener("mouseleave", iniciarAutoPlay);
+        iniciarAutoPlay();
+    }
+}
