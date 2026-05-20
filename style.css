@@ -325,7 +325,8 @@ main {
 #titulo-hero,
 #titulo-descobrir,
 #titulo-impacto,
-#titulo-fale-conosco {
+#titulo-fale-conosco,
+#titulo-impacto-pagina {
     scroll-margin-top: clamp(72px, 8vw, 100px);
 }
 
@@ -1920,6 +1921,190 @@ footer {
 
     #impacto .impacto-copy.impacto-copy--static {
         padding: 46px 38px 48px;
+    }
+}
+
+/* ===========================
+   PAGINA IMPACTO
+   =========================== */
+
+.page-impacto {
+    background:
+        radial-gradient(circle at top, rgba(245, 240, 185, 0.72), transparent 54%),
+        #fdfbd4;
+    color: #217601;
+}
+
+.page-impacto #cabecalho {
+    background: rgba(253, 251, 212, 0.92);
+    backdrop-filter: blur(10px);
+}
+
+.page-impacto .h2-logo,
+.page-impacto .a-cabecalho,
+.page-impacto #menu-toggle {
+    color: #217601;
+}
+
+.page-impacto #menu-toggle:hover,
+.page-impacto #menu-toggle:focus-visible,
+.page-impacto #menu-toggle[aria-expanded="true"] {
+    border-color: rgba(33, 118, 1, 0.9);
+}
+
+.page-impacto #menu-toggle span {
+    background: currentColor;
+}
+
+.page-impacto #nav-principal {
+    background: rgba(253, 251, 212, 0.98);
+    border-color: rgba(33, 118, 1, 0.18);
+}
+
+.page-impacto .a-cabecalho:hover,
+.page-impacto .a-cabecalho:focus-visible {
+    background: rgba(33, 118, 1, 0.08);
+}
+
+.page-impacto.hero-past #cabecalho,
+.page-impacto.hero-past #cabecalho:hover,
+.page-impacto.hero-past #cabecalho:focus-within,
+.page-impacto.nav-can-hide.nav-reveal #cabecalho {
+    background: rgba(253, 251, 212, 0.96);
+    backdrop-filter: blur(10px);
+}
+
+.page-impacto main {
+    padding: 0;
+}
+
+.page-impacto #hero {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    background:
+        linear-gradient(180deg, rgba(253, 251, 212, 0.88) 0%, rgba(253, 251, 212, 0.98) 100%);
+}
+
+.impacto-pagina-hero {
+    width: 100%;
+}
+
+.impacto-page-inner {
+    width: min(1340px, calc(100% - 32px));
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 120px 0 52px;
+    display: grid;
+    align-content: center;
+    gap: 34px;
+}
+
+.impacto-page-intro {
+    display: grid;
+    gap: 18px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.impacto-page-eyebrow {
+    color: #217601;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.impacto-page-intro h1 {
+    color: #0f5212;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 0.96;
+    text-wrap: balance;
+}
+
+.impacto-page-lead {
+    max-width: 820px;
+    margin: 0 auto;
+    color: rgba(15, 82, 18, 0.88);
+    font-size: clamp(1rem, 1.9vw, 1.28rem);
+    line-height: 1.72;
+}
+
+.impacto-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.impacto-benefit-card {
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    gap: 14px;
+    min-height: 250px;
+    padding: 28px 22px 24px;
+    border: 2px solid rgba(33, 118, 1, 0.82);
+    border-radius: 24px;
+    background: rgba(253, 251, 212, 0.72);
+    text-align: center;
+}
+
+.impacto-benefit-icon {
+    display: grid;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #35a141 0%, #217601 100%);
+    color: #fdfbd4;
+    font-size: 2rem;
+}
+
+.impacto-benefit-card h2 {
+    color: #122a16;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.24;
+}
+
+.impacto-benefit-card p {
+    color: rgba(18, 42, 22, 0.84);
+    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+    line-height: 1.62;
+}
+
+.page-impacto footer {
+    background: #217601;
+    color: #ffffff;
+}
+
+@media (min-width: 768px) {
+    .impacto-page-inner {
+        width: min(1360px, calc(100% - 56px));
+        padding: 132px 0 64px;
+        gap: 42px;
+    }
+
+    .impacto-benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .impacto-page-inner {
+        padding: 142px 0 72px;
+        gap: 46px;
+    }
+
+    .impacto-benefits-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 28px;
     }
 }
 
