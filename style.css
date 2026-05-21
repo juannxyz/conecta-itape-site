@@ -326,7 +326,9 @@ main {
 #titulo-descobrir,
 #titulo-impacto,
 #titulo-fale-conosco,
-#titulo-impacto-pagina {
+#titulo-impacto-pagina,
+#mais-visibilidade,
+#titulo-mais-visibilidade {
     scroll-margin-top: clamp(72px, 8vw, 100px);
 }
 
@@ -1929,21 +1931,20 @@ footer {
    =========================== */
 
 .page-impacto {
-    background:
-        radial-gradient(circle at top, rgba(245, 240, 185, 0.72), transparent 54%),
-        #fdfbd4;
+    background: #fdfbd4;
     color: #217601;
 }
 
 .page-impacto #cabecalho {
-    background: rgba(253, 251, 212, 0.92);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
 }
 
 .page-impacto .h2-logo,
 .page-impacto .a-cabecalho,
 .page-impacto #menu-toggle {
     color: #217601;
+    text-shadow: none;
 }
 
 .page-impacto #menu-toggle:hover,
@@ -1957,21 +1958,35 @@ footer {
 }
 
 .page-impacto #nav-principal {
-    background: rgba(253, 251, 212, 0.98);
+    background: #fdfbd4;
     border-color: rgba(33, 118, 1, 0.18);
+}
+
+.page-impacto #ul-cabecalho {
+    display: grid;
+    gap: 10px;
+}
+
+.page-impacto #menu-toggle {
+    display: inline-flex;
+}
+
+.page-impacto .a-cabecalho {
+    background: transparent;
+    border-radius: 0;
 }
 
 .page-impacto .a-cabecalho:hover,
 .page-impacto .a-cabecalho:focus-visible {
-    background: rgba(33, 118, 1, 0.08);
+    background: transparent;
 }
 
 .page-impacto.hero-past #cabecalho,
 .page-impacto.hero-past #cabecalho:hover,
 .page-impacto.hero-past #cabecalho:focus-within,
 .page-impacto.nav-can-hide.nav-reveal #cabecalho {
-    background: rgba(253, 251, 212, 0.96);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
 }
 
 .page-impacto main {
@@ -1982,8 +1997,7 @@ footer {
     height: auto;
     min-height: 100svh;
     overflow: visible;
-    background:
-        linear-gradient(180deg, rgba(253, 251, 212, 0.88) 0%, rgba(253, 251, 212, 0.98) 100%);
+    background: #fdfbd4;
 }
 
 .impacto-pagina-hero {
@@ -1997,12 +2011,12 @@ footer {
     padding: 120px 0 52px;
     display: grid;
     align-content: center;
-    gap: 34px;
+    gap: 24px;
 }
 
 .impacto-page-intro {
     display: grid;
-    gap: 18px;
+    gap: 12px;
     max-width: 860px;
     margin: 0 auto;
     text-align: center;
@@ -2011,7 +2025,7 @@ footer {
 .impacto-page-eyebrow {
     color: #217601;
     font-family: "Montserrat", Arial, sans-serif;
-    font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+    font-size: clamp(0.82rem, 1vw, 0.96rem);
     font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -2020,9 +2034,9 @@ footer {
 .impacto-page-intro h1 {
     color: #0f5212;
     font-family: "Montserrat", Arial, sans-serif;
-    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-size: clamp(2.1rem, 4.8vw, 3.6rem);
     font-weight: 900;
-    line-height: 0.96;
+    line-height: 0.94;
     text-wrap: balance;
 }
 
@@ -2030,8 +2044,8 @@ footer {
     max-width: 820px;
     margin: 0 auto;
     color: rgba(15, 82, 18, 0.88);
-    font-size: clamp(1rem, 1.9vw, 1.28rem);
-    line-height: 1.72;
+    font-size: clamp(0.96rem, 1.45vw, 1.08rem);
+    line-height: 1.55;
 }
 
 .impacto-benefits-grid {
@@ -2049,8 +2063,33 @@ footer {
     padding: 28px 22px 24px;
     border: 2px solid rgba(33, 118, 1, 0.82);
     border-radius: 24px;
-    background: rgba(253, 251, 212, 0.72);
+    background: #fdfbd4;
     text-align: center;
+}
+
+.impacto-benefit-card--link {
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.impacto-benefit-card--link:hover,
+.impacto-benefit-card--link:focus-visible {
+    background: #217601;
+    color: #ffffff;
+}
+
+.impacto-benefit-card--link:hover h2,
+.impacto-benefit-card--link:hover p,
+.impacto-benefit-card--link:focus-visible h2,
+.impacto-benefit-card--link:focus-visible p {
+    color: #ffffff;
+}
+
+.impacto-benefit-card--link:hover .impacto-benefit-icon,
+.impacto-benefit-card--link:focus-visible .impacto-benefit-icon {
+    background: #ffffff;
+    color: #217601;
 }
 
 .impacto-benefit-icon {
@@ -2059,7 +2098,7 @@ footer {
     width: 78px;
     height: 78px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #35a141 0%, #217601 100%);
+    background: #0f5212;
     color: #fdfbd4;
     font-size: 2rem;
 }
@@ -2078,19 +2117,189 @@ footer {
     line-height: 1.62;
 }
 
+.impacto-detail-section {
+    background: #fdfbd4;
+    color: #0f5212;
+}
+
+.impacto-detail-inner {
+    width: min(1360px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0 64px;
+    display: grid;
+    gap: 28px;
+}
+
+.impacto-detail-spotlight {
+    display: grid;
+    gap: 24px;
+    align-items: start;
+}
+
+.impacto-detail-copy {
+    display: grid;
+    gap: 18px;
+}
+
+.impacto-detail-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f5212;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.impacto-detail-eyebrow i {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #217601;
+    border-radius: 50%;
+    color: #217601;
+    font-size: 1.1rem;
+}
+
+.impacto-detail-copy h2 {
+    max-width: 12ch;
+    color: #0f5212;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.3rem);
+    font-weight: 900;
+    line-height: 0.95;
+}
+
+.impacto-detail-text {
+    max-width: 35rem;
+    color: rgba(15, 82, 18, 0.9);
+    font-size: clamp(1rem, 1.9vw, 1.22rem);
+    line-height: 1.68;
+}
+
+.impacto-detail-callout {
+    padding: 22px 20px;
+    border: 2px solid rgba(33, 118, 1, 0.72);
+    border-radius: 20px;
+    background: #fdfbd4;
+}
+
+.impacto-detail-callout p {
+    color: #0f5212;
+    font-size: clamp(1rem, 1.7vw, 1.16rem);
+    line-height: 1.65;
+    font-weight: 600;
+}
+
+.impacto-detail-media {
+    overflow: hidden;
+    border: 2px solid rgba(33, 118, 1, 0.72);
+    border-radius: 26px;
+    background: #fdfbd4;
+}
+
+.impacto-detail-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 11;
+}
+
+.impacto-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.impacto-detail-card {
+    padding: 26px 22px;
+    border: 2px solid rgba(33, 118, 1, 0.78);
+    border-radius: 22px;
+    background: #fdfbd4;
+}
+
+.impacto-detail-card h3 {
+    max-width: 12ch;
+    color: #0f5212;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.impacto-detail-card h3::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin-top: 16px;
+    border-radius: 999px;
+    background: #217601;
+}
+
+.impacto-detail-card p {
+    margin-top: 18px;
+    color: rgba(15, 82, 18, 0.9);
+    font-size: clamp(1rem, 1.45vw, 1.12rem);
+    line-height: 1.68;
+}
+
 .page-impacto footer {
     background: #217601;
     color: #ffffff;
 }
 
 @media (min-width: 768px) {
+    .page-impacto #nav-principal {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        top: auto;
+        right: auto;
+        left: auto;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .page-impacto #ul-cabecalho {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .page-impacto #menu-toggle {
+        display: none;
+    }
+
     .impacto-page-inner {
         width: min(1360px, calc(100% - 56px));
-        padding: 132px 0 64px;
-        gap: 42px;
+        padding: 120px 0 48px;
+        gap: 28px;
     }
 
     .impacto-benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .impacto-detail-inner {
+        width: min(1360px, calc(100% - 56px));
+        padding: 64px 0 72px;
+        gap: 32px;
+    }
+
+    .impacto-detail-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 22px;
     }
@@ -2098,13 +2307,28 @@ footer {
 
 @media (min-width: 1024px) {
     .impacto-page-inner {
-        padding: 142px 0 72px;
-        gap: 46px;
+        padding: 114px 0 40px;
+        gap: 24px;
     }
 
     .impacto-benefits-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 28px;
+    }
+
+    .impacto-detail-inner {
+        padding: 72px 0 84px;
+        gap: 38px;
+    }
+
+    .impacto-detail-spotlight {
+        grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+        gap: 34px;
+    }
+
+    .impacto-detail-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
     }
 }
 

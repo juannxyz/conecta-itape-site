@@ -18,6 +18,14 @@ let intervalo;
 let navHeaderHovered = false;
 let navZoneHovered = false;
 const desktopHoverNavMedia = window.matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)");
+let navInitialRevealActive = desktopHoverNavMedia.matches && window.scrollY <= 8;
+
+if (navInitialRevealActive) {
+    window.setTimeout(() => {
+        navInitialRevealActive = false;
+        syncFloatingNav();
+    }, 1600);
+}
 
 function syncFloatingNav() {
     if (!header || !heroSection) {
@@ -25,19 +33,24 @@ function syncFloatingNav() {
     }
 
     const hasPassedHero = window.scrollY > heroSection.offsetHeight - header.offsetHeight;
-    const canHideNav = desktopHoverNavMedia.matches && hasPassedHero;
+    const canHideNav = desktopHoverNavMedia.matches;
 
     document.body.classList.toggle("hero-past", hasPassedHero);
 
     document.body.classList.toggle("nav-can-hide", canHideNav);
 
-    if (!canHideNav) {
+    if (!canHideNav && !navInitialRevealActive) {
         document.body.classList.remove("nav-reveal");
         return;
     }
 
     const menuIsOpen = menuToggle?.getAttribute("aria-expanded") === "true";
-    const shouldReveal = navHeaderHovered || navZoneHovered || menuIsOpen || header.matches(":focus-within");
+    const shouldReveal =
+        navInitialRevealActive ||
+        navHeaderHovered ||
+        navZoneHovered ||
+        menuIsOpen ||
+        header.matches(":focus-within");
     document.body.classList.toggle("nav-reveal", shouldReveal);
 }
 
