@@ -399,11 +399,21 @@ const iconesCategorias = {
     Esporte: "fa-solid fa-futbol",
 };
 
+const nomesCategorias = {
+    Educacao: "Educação",
+    Solidariedade: "Solidariedade",
+    Cultura: "Cultura",
+    Animais: "Animais",
+    MeioAmbiente: "Meio Ambiente",
+    Saude: "Saúde",
+    Esporte: "Esporte",
+};
+
 const lista_ongs = [
     {
         id: 1,
         nome: "Educar para Transformar",
-        descricao:"Reforco escolar, acolhimento e atividades de formacao para criancas e adolescentes.",
+        descricao:"Reforço escolar, acolhimento e atividades de formacao para criancas e adolescentes.",
         descricaoCompleta:"A ONG atua oferecendo reforco escolar, acolhimento social e oficinas educativas para criancas e adolescentes em situacao de vulnerabilidade.",
         categoriaPrincipal: "Educacao",
         categorias: ["Educacao", "Reforco", "Comunidade"],
@@ -489,30 +499,7 @@ const div_ongs = document.querySelector("#ongs");
 
 
 if (div_ongs) {
-    lista_ongs.forEach((ong) => {
-    const card_ong = document.createElement("a");
-    card_ong.classList.add("cards");
-    card_ong.href = `detalhes.html?id=${ong.id}`;
-    const span_ong = document.createElement("span");
-    span_ong.classList.add("card-badge");
-    const icone = iconesCategorias[ong.categoriaPrincipal] || "fa-solid fa-circle-info";
-    span_ong.innerHTML = `<i class="${icone}"></i>${ong.categoriaPrincipal}`;
-    const img_ong = document.createElement("img");
-    img_ong.src = ong.imagens[0].src;
-    img_ong.alt = ong.imagens[0].alt;
-    const nome_ong = document.createElement("h3");
-    nome_ong.textContent = ong.nome;
-    const descricao_ong = document.createElement("p");
-    descricao_ong.textContent = ong.descricao;
-    const categorias_ong = document.createElement("h4");
-    categorias_ong.textContent = ong.categorias.join(" • ");
-    card_ong.appendChild(span_ong);
-    card_ong.appendChild(img_ong);
-    card_ong.appendChild(nome_ong);
-    card_ong.appendChild(descricao_ong);
-    card_ong.appendChild(categorias_ong);
-    div_ongs.appendChild(card_ong);
-    });
+    renderizarONGs(lista_ongs);
 }
 
 /* ===== PAGINA DETALHES ===== */
@@ -526,17 +513,14 @@ if (detalheContainer) {
     if (!ong) {
         detalheContainer.innerHTML = `
             <div class="detalhe-card">
-                <h2>ONG nao encontrada</h2>
+                <h2>ONG não encontrada</h2>
                 <a href="index.html">Voltar</a>
             </div>
         `;
     } else {
         document.title = `EntreCausas | ${ong.nome}`;
         document.querySelector("#titulo-ong").textContent = ong.nome;
-        document.querySelector(".local").innerHTML = `
-            <i class="fa-solid fa-location-dot"></i>
-            ${ong.local}
-        `;
+        document.querySelector(".local").innerHTML = `<i class="fa-solid fa-location-dot"></i>${ong.local}`;
         document.querySelector(".descricao").textContent = ong.descricaoCompleta || ong.descricao;
         document.querySelector(".btn-instagram").href = ong.instagram;
         document.querySelector(".btn-facebook").href = ong.facebook;
@@ -572,11 +556,11 @@ if (detalheContainer) {
 
 function iniciarCarrosselDetalhes() {
 
-    imagens = document.querySelectorAll(".detalhe-imagem img");
+    const imagens = document.querySelectorAll(".detalhe-imagem img");
 
-    carrossel_fotos = document.querySelectorAll(".carrossel-fotos span");
+    const carrossel_fotos = document.querySelectorAll(".carrossel-fotos span");
 
-    container = document.querySelector(".detalhe-imagem");
+    const container = document.querySelector(".detalhe-imagem");
     if (
         imagens.length > 0 &&
         container &&
@@ -594,3 +578,49 @@ function iniciarCarrosselDetalhes() {
         iniciarAutoPlay();
     }
 }
+
+/* ===== Busca ===== */
+const inputBusca = document.querySelector("#pesquisa-ong");
+
+function renderizarONGs(lista) {
+
+    div_ongs.innerHTML = "";
+
+    lista.forEach((ong) => {
+        const card_ong = document.createElement("a");
+        card_ong.classList.add("cards");
+        card_ong.href = `detalhes.html?id=${ong.id}`;
+        const span_ong = document.createElement("span");
+        span_ong.classList.add("card-badge");
+        const icone = iconesCategorias[ong.categoriaPrincipal]|| "fa-solid fa-circle-info";
+        span_ong.innerHTML = `<i class="${icone}"></i>${nomesCategorias[ong.categoriaPrincipal] || ong.categoriaPrincipal}`;
+        const img_ong = document.createElement("img");
+        img_ong.src = ong.imagens[0].src;
+        img_ong.alt = ong.imagens[0].alt;
+        const nome_ong = document.createElement("h3");
+        nome_ong.textContent = ong.nome;
+        const descricao_ong = document.createElement("p");
+        descricao_ong.textContent = ong.descricao;
+        const categorias_ong = document.createElement("h4");
+        categorias_ong.textContent = ong.categorias.map(cat => nomesCategorias[cat] || cat).join(" • ");
+
+        card_ong.appendChild(span_ong);
+        card_ong.appendChild(img_ong);
+        card_ong.appendChild(nome_ong);
+        card_ong.appendChild(descricao_ong);
+        card_ong.appendChild(categorias_ong);
+
+        div_ongs.appendChild(card_ong);
+    });
+}
+
+
+inputBusca?.addEventListener("input", () => {
+    const termo = inputBusca.value.toLowerCase().trim();
+    const ongsFiltradas = lista_ongs.filter((ong) => {
+        return (
+            ong.nome.toLowerCase().includes(termo) || ong.descricao.toLowerCase().includes(termo) || ong.categorias.some(cat => (nomesCategorias[cat] || cat).toLowerCase().includes(termo))
+        );
+    });
+    renderizarONGs(ongsFiltradas);
+});
